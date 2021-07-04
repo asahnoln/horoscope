@@ -58,7 +58,6 @@ Here's the main part. You can try it in ~ghci~ or in your app:
 compatible "Cancer" "Gemini" []
 #+end_src
 
-#+RESULTS:
 #+begin_src haskell
 True
 #+end_src
@@ -67,7 +66,6 @@ True
 compatible "Gemini" "Cancer" []
 #+end_src
 
-#+RESULTS:
 #+begin_src haskell
 True
 #+end_src
@@ -76,7 +74,6 @@ True
 compatible "Cancer" "Cancer" ["love"]
 #+end_src
 
-#+RESULTS:
 #+begin_src haskell
 False
 #+end_src
@@ -85,7 +82,6 @@ False
 compatible "Cancer" "Cancer" ["friendship"]
 #+end_src
 
-#+RESULTS:
 #+begin_src haskell
 True
 #+end_src
@@ -96,7 +92,6 @@ You can even check what horoscope says about relationship between Cancer and num
 compatible "Cancer" 2 []
 #+end_src
 
-#+RESULTS:
 #+begin_src haskell
 True
 #+end_src
@@ -109,7 +104,6 @@ Experiment!
 compatible 'A' 0.5 [True, False]
 #+end_src
 
-#+RESULTS:
 #+begin_src haskell
 False
 #+end_src
