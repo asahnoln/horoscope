@@ -19,7 +19,7 @@ Horoscope calculates relationship compatibility between two signs. Or anything e
 ** Motivation
 This project is inspired by [[https://vm.tiktok.com/ZSJqcaSX1/][the same project]] written in JavaScript by TikTok user =@knotri=.
 
-The original work has one flaw: it is /too/ random! E.g. if you give that function arguments ~"Pisces", "Scorpio"~ and ~"Scorpio", "Pisces"~, it returns different results. Even if you give the same inputs, it returns different results each time you use it.
+The original work has one flaw: it is /too/ random! E.g. if you give that function arguments ~('Pisces', 'Scorpio')~ and ~('Scorpio', 'Pisces')~, it returns different results. Even if you give the same inputs, it returns different results each time you use it.
 
 I believe horoscope should give you the same results each time you use. 'cause the stars don't move /that/ fast, y'know!
 
@@ -52,9 +52,13 @@ compatible x y ps = fst . random $ gen
 All the inputs play big role in the result! And the result will be always the same for the same set of parameters! The stars are moving, but they are true to their sayings 😏
 
 * How To Use
+:PROPERTIES:
+:header-args: :tangle no
+:END:
+
 Here's the main part. You can try it in ~ghci~ or in your app:
 
-#+begin_src haskell :tangle no :results value code
+#+begin_src haskell :results value code
 compatible "Cancer" "Gemini" []
 #+end_src
 
@@ -62,7 +66,7 @@ compatible "Cancer" "Gemini" []
 True
 #+end_src
 
-#+begin_src haskell :tangle no :results value code
+#+begin_src haskell :results value code
 compatible "Gemini" "Cancer" []
 #+end_src
 
@@ -70,7 +74,7 @@ compatible "Gemini" "Cancer" []
 True
 #+end_src
 
-#+begin_src haskell :tangle no
+#+begin_src haskell
 compatible "Cancer" "Cancer" ["love"]
 #+end_src
 
@@ -78,7 +82,7 @@ compatible "Cancer" "Cancer" ["love"]
 False
 #+end_src
 
-#+begin_src haskell :tangle no
+#+begin_src haskell
 compatible "Cancer" "Cancer" ["friendship"]
 #+end_src
 
@@ -88,7 +92,7 @@ True
 
 You can even check what horoscope says about relationship between Cancer and number 2:
 
-#+begin_src haskell :tangle no
+#+begin_src haskell
 compatible "Cancer" 2 []
 #+end_src
 
@@ -100,7 +104,7 @@ Oh wow! They are compatible 😉
 
 Experiment!
 
-#+begin_src haskell :tangle no
+#+begin_src haskell
 compatible 'A' 0.5 [True, False]
 #+end_src
 
