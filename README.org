@@ -1,0 +1,105 @@
+#+TITLE: Horoscope Compatibility Finder
+#+AUTHOR: Arthur Aslanyan
+#+EMAIL: arthur.e.aslanyan@gmail.com
+#+DESCRIPTION: Horoscope module description
+#+PROPERTY: header-args :tangle horoscope.hs :session haskell-share
+
+* Table of Contents :toc:
+- [[#about-horoscope-module][About Horoscope Module]]
+  - [[#motivation][Motivation]]
+- [[#implementation][Implementation]]
+  - [[#declaration][Declaration]]
+  - [[#imports][Imports]]
+  - [[#the-function][The Function]]
+- [[#how-to-use][How To Use]]
+
+* About Horoscope Module
+Horoscope calculates relationship compatibility between two signs. Or anything else. With extra parameters!
+
+** Motivation
+This project is inspired by [[https://vm.tiktok.com/ZSJqcaSX1/][the same project]] written in JavaScript by TikTok user =@knotri=.
+
+The original work has one flaw: it is /too/ random! E.g. if you give that function arguments ~"Pisces", "Scorpio"~ and ~"Scorpio", "Pisces"~, it returns different results. Even if you give the same inputs, it returns different results each time you use it.
+
+I believe horoscope should give you the same results each time you use. 'cause the stars don't move /that/ fast, y'know!
+
+This is where Haskell comes in: a pure functional language shines when you need the /same/ output for the /same/ input!
+
+* Implementation
+** Declaration
+First, we declare the module:
+#+begin_src haskell :results silent
+module Horoscope where
+#+end_src
+
+** Imports
+We need some horoscope magic 😏:
+#+begin_src haskell :results silent
+import System.Random
+#+end_src
+
+** The Function
+~compatible~ function takes first sign /(any type, that can be shown)/, second sign /(again, the same condition)/ and additional list of extra parameters /(the same any type)/. E.g. you want to check if they are compatible for love or friendship.
+
+#+begin_src haskell :results silent
+compatible :: (Show a, Show b, Show c) => a -> b -> [c] -> Bool
+compatible x y ps = fst . random $ gen
+  where
+    gen = mkStdGen seed
+    seed = length $ show x ++ show y ++ concat (show <$> ps)
+#+end_src
+
+All the inputs play big role in the result! And the result will be always the same for the same set of parameters! The stars are moving, but they are true to their sayings 😏
+
+* How To Use
+Here's the main part. You can try it in ~ghci~ or in your app:
+
+#+begin_src haskell :tangle no
+compatible "Cancer" "Gemini" []
+#+end_src
+
+#+RESULTS:
+: True
+
+#+begin_src haskell :tangle no
+compatible "Gemini" "Cancer" []
+#+end_src
+
+#+RESULTS:
+: True
+
+#+begin_src haskell :tangle no
+compatible "Cancer" "Cancer" ["love"]
+#+end_src
+
+#+RESULTS:
+: False
+
+#+begin_src haskell :tangle no
+compatible "Cancer" "Cancer" ["friendship"]
+#+end_src
+
+#+RESULTS:
+: True
+
+You can even check what horoscope says about relationship between Cancer and number 2:
+
+#+begin_src haskell :tangle no
+compatible "Cancer" 2 []
+#+end_src
+
+#+RESULTS:
+: True
+
+Oh wow! They are compatible 😉
+
+Experiment!
+
+#+begin_src haskell :tangle no
+compatible 'A' 0.5 [True, False]
+#+end_src
+
+#+RESULTS:
+: False
+
+I don't know what that means, but this is serious 🤔
