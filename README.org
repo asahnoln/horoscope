@@ -54,33 +54,41 @@ All the inputs play big role in the result! And the result will be always the sa
 * How To Use
 Here's the main part. You can try it in ~ghci~ or in your app:
 
-#+begin_src haskell :tangle no
+#+begin_src haskell :tangle no :results value code
 compatible "Cancer" "Gemini" []
 #+end_src
 
 #+RESULTS:
-: True
+#+begin_src haskell
+True
+#+end_src
 
-#+begin_src haskell :tangle no
+#+begin_src haskell :tangle no :results value code
 compatible "Gemini" "Cancer" []
 #+end_src
 
 #+RESULTS:
-: True
+#+begin_src haskell
+True
+#+end_src
 
 #+begin_src haskell :tangle no
 compatible "Cancer" "Cancer" ["love"]
 #+end_src
 
 #+RESULTS:
-: False
+#+begin_src haskell
+False
+#+end_src
 
 #+begin_src haskell :tangle no
 compatible "Cancer" "Cancer" ["friendship"]
 #+end_src
 
 #+RESULTS:
-: True
+#+begin_src haskell
+True
+#+end_src
 
 You can even check what horoscope says about relationship between Cancer and number 2:
 
@@ -89,7 +97,9 @@ compatible "Cancer" 2 []
 #+end_src
 
 #+RESULTS:
-: True
+#+begin_src haskell
+True
+#+end_src
 
 Oh wow! They are compatible 😉
 
@@ -100,6 +110,8 @@ compatible 'A' 0.5 [True, False]
 #+end_src
 
 #+RESULTS:
-: False
+#+begin_src haskell
+False
+#+end_src
 
 I don't know what that means, but this is serious 🤔
