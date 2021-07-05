@@ -24,44 +24,50 @@ This is where Haskell comes in: a pure functional language shines when you need 
 Here's the main part. You can try it in ~ghci~ or in your app:
 
 #+begin_src haskell
-> compatible "Cancer" "Gemini" []
-True
+compatible "Cancer" "Gemini" []
 #+end_src
 
-#+begin_src haskell
-> compatible "Gemini" "Cancer" []
-True
-#+end_src
+~True~
 
 #+begin_src haskell
-> compatible "Cancer" "Cancer" ["love"]
-False
+compatible "Gemini" "Cancer" []
 #+end_src
 
+~True~
+
 #+begin_src haskell
-> compatible "Cancer" "Cancer" ["friendship"]
-True
+compatible "Cancer" "Cancer" ["love"]
 #+end_src
+
+~False~
+
+#+begin_src haskell
+compatible "Cancer" "Cancer" ["friendship"]
+#+end_src
+
+~True~
 
 You can even check what horoscope says about relationship between Cancer and number 2:
 
 #+begin_src haskell
-> compatible "Cancer" 2 []
-True
+compatible "Cancer" 2 []
 #+end_src
+
+~True~
 
 Oh wow! They are compatible 😉
 
 Experiment!
 
 #+begin_src haskell
-> compatible 'A' 0.5 [True, False]
-False
+compatible 'A' 0.5 [True, False]
 #+end_src
+
+~False~
 
 I don't know what that means, but this is serious 🤔
 
 ** Implementation
-You can find implementation details in [[file:horoscope.org::*Table of Contents][Horoscope Module Implementation]] document.
+You can find implementation details in [[file:horoscope.org::*Declaration][Horoscope Module Implementation]] document.
 
 /Beware:/ some of the magic might be lost 😏
