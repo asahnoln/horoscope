@@ -1,0 +1,35 @@
+#+TITLE: Horoscope Module Implementation
+#+AUTHOR: Arthur Aslanyan
+#+EMAIL: arthur.e.aslanyan@gmail.com
+#+DESCRIPTION: Horoscope module description
+#+PROPERTY: header-args :tangle horoscope.hs :session haskell-share
+
+* Table of Contents :toc:
+- [[#declaration][Declaration]]
+- [[#imports][Imports]]
+- [[#the-function][The Function]]
+
+* Declaration
+First, we declare the module:
+#+begin_src haskell :results silent
+module Horoscope where
+#+end_src
+
+* Imports
+We need some horoscope magic 😏:
+#+begin_src haskell :results silent
+import System.Random
+#+end_src
+
+* The Function
+~compatible~ function takes first sign /(any type, that can be shown)/, second sign /(again, the same condition)/ and additional list of extra parameters /(the same any type)/. E.g. you want to check if they are compatible for love or friendship.
+
+#+begin_src haskell :results silent
+compatible :: (Show a, Show b, Show c) => a -> b -> [c] -> Bool
+compatible x y ps = fst . random $ gen
+  where
+    gen = mkStdGen seed
+    seed = length $ show x ++ show y ++ concat (show <$> ps)
+#+end_src
+
+All the inputs play big role in the result! The result is always the same for the same set of parameters! The stars are moving, but they are true to their sayings 😏
