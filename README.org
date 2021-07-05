@@ -3,16 +3,15 @@
 #+EMAIL: arthur.e.aslanyan@gmail.com
 #+DESCRIPTION: Horoscope module description
 
-* Table of Contents :toc:
-- [[#about-horoscope-module][About Horoscope Module]]
-  - [[#motivation][Motivation]]
-- [[#usage][Usage]]
-- [[#implementation][Implementation]]
+** Table of Contents :toc:
+  - [[#about-horoscope-module][About Horoscope Module]]
+  - [[#usage][Usage]]
+  - [[#implementation][Implementation]]
 
-* About Horoscope Module
+** About Horoscope Module
 Horoscope calculates relationship compatibility between two signs. Or anything else. With extra parameters!
 
-** Motivation
+*** Motivation
 This project is inspired by [[https://vm.tiktok.com/ZSJqcaSX1/][the same project]] written in JavaScript by TikTok user ~@knotri~.
 
 The original work has one flaw: it is /too/ random! E.g. if you give that function arguments ~('Pisces', 'Scorpio')~ and ~('Scorpio', 'Pisces')~, it returns different results. Even if you give the same inputs, it returns different results each time you use it.
@@ -21,7 +20,7 @@ I believe horoscope should give you the same results each time you use. 'cause t
 
 This is where Haskell comes in: a pure functional language shines when you need the /same/ output for the /same/ input!
 
-* Usage
+** Usage
 Here's the main part. You can try it in ~ghci~ or in your app:
 
 #+begin_src haskell
@@ -62,7 +61,7 @@ False
 
 I don't know what that means, but this is serious 🤔
 
-* Implementation
-You can find implementation details in [[file:horoscope.org][Horoscope Module Implementation]] document.
+** Implementation
+You can find implementation details in [[file:horoscope.org::*Table of Contents][Horoscope Module Implementation]] document.
 
 /Beware:/ some of the magic might be lost 😏

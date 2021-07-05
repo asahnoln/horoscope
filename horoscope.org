@@ -4,24 +4,24 @@
 #+DESCRIPTION: Horoscope module description
 #+PROPERTY: header-args :tangle horoscope.hs :session haskell-share
 
-* Table of Contents :toc:
-- [[#declaration][Declaration]]
-- [[#imports][Imports]]
-- [[#the-function][The Function]]
+** Table of Contents :toc:
+  - [[#declaration][Declaration]]
+  - [[#imports][Imports]]
+  - [[#the-function][The Function]]
 
-* Declaration
+** Declaration
 First, we declare the module:
 #+begin_src haskell :results silent
 module Horoscope where
 #+end_src
 
-* Imports
+** Imports
 We need some horoscope magic 😏:
 #+begin_src haskell :results silent
 import System.Random
 #+end_src
 
-* The Function
+** The Function
 ~compatible~ function takes first sign /(any type, that can be shown)/, second sign /(again, the same condition)/ and additional list of extra parameters /(the same any type)/. E.g. you want to check if they are compatible for love or friendship.
 
 #+begin_src haskell :results silent
